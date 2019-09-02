@@ -1,6 +1,6 @@
 package io.github.adamnain.forecastmvvm.data;
 
-import io.github.adamnain.forecastmvvm.data.response.CurrentWeatherResponse;
+import io.github.adamnain.forecastmvvm.data.network.response.CurrentWeatherResponse;
 import kotlinx.coroutines.Deferred
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient

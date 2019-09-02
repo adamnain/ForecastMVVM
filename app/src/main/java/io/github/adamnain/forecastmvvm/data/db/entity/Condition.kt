@@ -1,4 +1,4 @@
-package io.github.adamnain.forecastmvvm.data.response
+package io.github.adamnain.forecastmvvm.data.db.entity
 
 
 import com.google.gson.annotations.SerializedName
