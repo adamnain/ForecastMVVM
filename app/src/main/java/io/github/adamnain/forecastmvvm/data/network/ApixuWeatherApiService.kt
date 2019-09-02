@@ -1,4 +1,4 @@
-package io.github.adamnain.forecastmvvm.data;
+package io.github.adamnain.forecastmvvm.data.network;
 
 import io.github.adamnain.forecastmvvm.data.network.response.CurrentWeatherResponse;
 import kotlinx.coroutines.Deferred
@@ -23,7 +23,9 @@ interface ApixuWeatherApiService {
     ): Deferred<CurrentWeatherResponse>
 
     companion object {
-        operator fun invoke(): ApixuWeatherApiService {
+        operator fun invoke(
+            connectivityInterceptor: ConnectivityInterceptor
+        ): ApixuWeatherApiService {
             val requestInterceptor = Interceptor { chain ->
 
                     val url = chain.request()
@@ -41,6 +43,7 @@ interface ApixuWeatherApiService {
 
             val okHttpClient = OkHttpClient.Builder()
                     .addInterceptor(requestInterceptor)
+                    .addInterceptor(connectivityInterceptor)
                     .build()
 
             return Retrofit.Builder()
